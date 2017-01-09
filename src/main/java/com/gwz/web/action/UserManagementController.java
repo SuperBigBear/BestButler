@@ -54,7 +54,7 @@ public class UserManagementController {
 			userInfo.setFirstName("Ming");
 			userInfo.setLastName("Lu");
 			userInfo.setLoginName(ss);
-			userInfo.setEmail("ming.lu@genewiz.com");
+			userInfo.setEmail("ming.lu@outlook.com");
 			userInfo.setGender(3);
 			userInfo.setAddress("Suzhou City,Jiangsu province");
 			
