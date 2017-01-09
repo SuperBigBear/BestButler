@@ -1,0 +1,44 @@
+#check ssh key ,github is private key ;github.pub is public ssh key
+ls -al ~/.ssh
+
+
+
+#set global initialization
+git config --global user.name "superbigbear"
+git config --global user.email "lu-ming@outlook.com"
+
+#generate public/private rsa key pair
+
+#generate private key in folder ~/.ssh/
+ssh-keygen -C 'luming198852@126.com' -t rsa
+ Your identification has been saved in superbigbear.
+Your public key has been saved in superbigbear.pub.
+
+sudo /home/ming/superbigbear.pub
+--------------------------------------
+git init
+touch README
+
+git add README
+git commit -m 'hello commit'
+
+ git remote add origin git@github.com:SuperBigBear/BestButler.git
+git remote rm origin
+
+git add .
+git push -u origin master
+git push origin master
+https://github.com/SuperBigBear/BestButler.git
+
+ git pull --rebase origin master
+
+#create ignore list
+cd project diretory and use command "gedit .gitignore"
+
+#handle commited ignore file
+git rm -r --cached filename
+or 
+git rm -r --cached .
+
+
+
