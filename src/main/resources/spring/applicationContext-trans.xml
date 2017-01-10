@@ -8,16 +8,19 @@
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
 	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
 
-	<!-- 事务管理器 -->
-	<!-- <bean id="transactionManager"
+	<!-- 事务管理器,依赖于数据源 -->
+	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		数据源
+		<!-- 数据源 -->
 		<property name="dataSource" ref="dataSource" />
-	</bean> -->
-	<!-- 通知 -->
-	<!-- <tx:advice id="txAdvice" transaction-manager="transactionManager">
+	</bean>
+	<!-- 编写通知：对事务进行增强，需要对切入点和具体执行事务细节 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
-			传播行为
+			<!-- 传播行为 -->
+			<!-- <tx:method> 给切入点添加事务详情 name:方法名称, *表示任意方法, do* 表示以do开头的方法 propagation:设置传播行为 
+				isolation:隔离级别 read-only:是否只读 -->
+
 			<tx:method name="save*" propagation="REQUIRED" />
 			<tx:method name="insert*" propagation="REQUIRED" />
 			<tx:method name="add*" propagation="REQUIRED" />
@@ -28,10 +31,48 @@
 			<tx:method name="select*" propagation="SUPPORTS" read-only="true" />
 			<tx:method name="get*" propagation="SUPPORTS" read-only="true" />
 		</tx:attributes>
-	</tx:advice> -->
+	</tx:advice>
 	<!-- 切面 -->
-	<!-- <aop:config>
-		<aop:advisor advice-ref="txAdvice"
-			pointcut="execution(* com.boz.service.*.*(..))" />
-	</aop:config> -->
+	<!-- aop编写,让Spring自动对目标进行代理，需要使用AspectJ的表达式 -->
+	<!-- <bean id="logHandler" class="com.jdbc.LogHandler"/> -->
+	<aop:config proxy-target-class="true">
+
+		<!-- 切入点 -->
+		<aop:pointcut expression="execution(* com.gwz.serviceimpl.*(..))"
+			id="txPointCut" />
+		<!-- 切面:将切入点和通知整合 -->
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut" />
+
+		<!-- 切面事务归txAdvice处理 -->
+		<!-- <aop:advisor advice-ref="txAdvice" pointcut="execution(* com.gwz.serviceimpl.*.*(..))" 
+			/> -->
+		<!-- <aop:advisor advice-ref="dataAccessThrowsAdvice" pointcut="execution(* 
+			com.XXX..*.*Dao.*(..))"/> -->
+
+		<!-- 配置日志打印类 -->
+		<!-- order属性表示横切关注点的顺序，当有多个时，序号依次增加 -->
+		<!-- <aop:aspect id="log" ref="logHandler" order="1"> 
+		切入点为AccountServiceImpl类下的transfer方法 
+			<aop:pointcut id="logTime" expression="execution(* com.jdbc.AccountServiceImpl.transfer(..))"/> 
+			<aop:before method="LogBefore" pointcut-ref="logTime"/>
+			 <aop:after method="LogAfter" pointcut-ref="logTime"/> 
+			 </aop:aspect> -->
+			 
+			  <!-- <aop:aspect id="loggerAspect" ref="logger">
+            <aop:around method="record" pointcut="(execution(* com.aijava.distributed.ssh.service..*.add*(..))
+                                              or   execution(* com.aijava.distributed.ssh.service..*.update*(..))
+                                              or   execution(* com.aijava.distributed.ssh.service..*.delete*(..)))
+                                            and !bean(logService)"/>
+        </aop:aspect> -->
+        
+         <!-- <aop:aspect id="TestAspect" ref="aspectBean">  
+            配置com.spring.service包下所有类或接口的所有方法  
+            <aop:pointcut id="businessService"  
+                expression="execution(* com.spring.service.*.*(..))" />  
+            <aop:before pointcut-ref="businessService" method="doBefore"/>  
+            <aop:after pointcut-ref="businessService" method="doAfter"/>  
+            <aop:around pointcut-ref="businessService" method="doAround"/>  
+            <aop:after-throwing pointcut-ref="businessService" method="doThrowing" throwing="ex"/>  
+        </aop:aspect>  -->
+	</aop:config>
 </beans>
