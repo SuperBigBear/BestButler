@@ -1,4 +1,4 @@
-package com.gwz.extension;
+package com.gwz.aop;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

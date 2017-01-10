@@ -50,7 +50,7 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/usermanagement/login" />
-			<bean id="loginInterceptor" class="com.gwz.extension.LoginInterceptor" />
+			<bean id="loginInterceptor" class="com.gwz.aop.LoginInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
 
