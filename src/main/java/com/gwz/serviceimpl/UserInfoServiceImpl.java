@@ -5,9 +5,9 @@ import java.util.UUID;
 import com.gwz.entity.UserInfo;
 import com.gwz.service.IUserBase;
 
-public class UserInfoService implements IUserBase {
+public class UserInfoServiceImpl implements IUserBase {
 
-	public UserInfoService() {
+	public UserInfoServiceImpl() {
 		// TODO Auto-generated constructor stub
 	}
 	public UserInfo getUserInfoById(UUID userId)
