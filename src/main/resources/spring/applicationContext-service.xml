@@ -14,7 +14,9 @@
     
     <!-- 加载配置文件 -->
      <context:property-placeholder location="classpath:others/resource.properties" />
-    <!-- <import resource="applicationContext-dao.xml" />
-    <import resource="applicationContext-redis.xml" />
-    <import resource="applicationContext-trans.xml" /> -->
+   <import resource="applicationContext-dao.xml" />
+   <import resource="applicationContext-trans.xml" />
+    <!--  <import resource="applicationContext-redis.xml" />
+ -->
+     
 </beans>

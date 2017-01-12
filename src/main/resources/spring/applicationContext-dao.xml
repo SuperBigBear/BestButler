@@ -9,7 +9,7 @@
 	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
 
 	<!-- 数据库连接池 -->
-	<!-- <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+	 <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		destroy-method="close">
 		<property name="url" value="${jdbc.url}" />
 		<property name="username" value="${jdbc.username}" />
@@ -17,12 +17,12 @@
 		<property name="driverClassName" value="${jdbc.driver}" />
 		<property name="maxActive" value="10" />
 		<property name="minIdle" value="5" />
-	</bean> -->
+	</bean> 
 	<!-- 配置sqlsessionFactory -->
-	<!-- <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="configLocation" value="classpath:SqlMapConfig.xml"></property>
+	 <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="classpath:others/SqlMapConfig.xml"></property>
 		<property name="dataSource" ref="dataSource"></property>
-	</bean> -->
+	</bean> 
 	<!-- 配置扫描包，加载mapper代理对象 -->
 	<!-- <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.boz.dao.mapper"></property>
