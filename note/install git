@@ -40,5 +40,34 @@ git rm -r --cached filename
 or 
 git rm -r --cached .
 
+---------------------------
+框架用到的技术：
+2.1 IOC容器：spring
+  2.2 MVC：springmvc,terasoluna
+  2.3 AOP:spring AOP
+  2.4 ORM:ibatis(mybatis)
+  2.5 nosql缓存：redis，memcache，ehcache
+  2.6 权限控制，apache shiro
+  2.7 远程调用：spring HttpInvoker，dubbox
+  2.8 集群服务注册中心：zookeeper
+  2.9 消息机制：apache aciveMQ
+  2.10 comet:pushlet(长连接推送)
+  2.11 邮件服务器：apache jmase
+  2.12 单点登录：cas（Central Authentication Server）
+  2.13 web服务器：apache，nginx
+  2.14 web容器：jetty,tomcat,IBM websphere，BEA weblogic
+  2.15 定时器: quartz
+  2.16 批处理：spring batch,terasoluna batch
+  2.17 mysql中间件：atlas(360)，mycat（基于alibba的corbar）
+  2.18 单文件系统：NFS(Network File System)
+  2.19 分布式文件系统：NDFS(hadoop),TFS(Taobao FileSystem)
+  2.20 分布式计算：spark，mapreduce，Storm
+  2.21 portal：JBOSS PORTAL，liferay portal
+  2.22 office处理：poi,open office
+  2.23 服务器状态检测：keepalived
+  2.26 模拟框架：mockito，easyMock，PowerMock，DBUnit
+  2.28 模板引擎：velocity,FreeMarker
+  2.29 开源数据库:mysql
+
 
 
