@@ -10,6 +10,7 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gwz.entity.UserInfo;
+import com.gwz.serviceimpl.UserInfoServiceImpl;
 
 //import org.springframework.web.servlet.mvc.Controller;
 
@@ -34,7 +36,14 @@ public class UserManagementController {
 	public UserManagementController() {
 		// TODO Auto-generated constructor stub
 	}
-
+	@Autowired
+	private UserInfoServiceImpl userService;
+	/*public UserInfoServiceImpl getUserService() {
+		return userService;
+	}
+	public void setUserService(UserInfoServiceImpl userService) {
+		this.userService = userService;
+	}*/
 	private UserInfo user=new UserInfo();
 	public UserInfo getUser() {
 		return user;
@@ -61,7 +70,8 @@ public class UserManagementController {
 			map.put("user", userInfo);
 			 
 			mv.addObject("map", map);
-
+						 
+			userService.getUserInfoById(UUID.randomUUID());
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

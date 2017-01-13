@@ -9,7 +9,7 @@
 	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
 
 	<!-- 扫描包加载Service实现类 -->
-     <context:component-scan base-package="com.gwz.web.action;com.gwz.entity" /> 
+     <context:component-scan base-package="com.gwz.web.action;com.gwz.entity;com.gwz.serviceimpl" /> 
     
     
     <!-- 加载配置文件 -->

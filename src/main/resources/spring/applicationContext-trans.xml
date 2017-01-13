@@ -35,7 +35,16 @@
 	<!-- 切面 -->
 	<!-- aop编写,让Spring自动对目标进行代理，需要使用AspectJ的表达式 -->
 	<!-- <bean id="logHandler" class="com.jdbc.LogHandler"/> -->
-	<bean id="aspectBean"   class = "com.gwz.aop.TestAspect"  />  
+	<bean id="userService" class="com.gwz.serviceimpl.UserInfoServiceImpl" />
+	<bean id="userManagement" class="com.gwz.web.action.UserManagementController">
+		 <property name="userService" ref="userService"></property>
+	</bean>
+	
+	<!-- <bean id="proxyFactoryBean" class="org.springframework.aop.framework.ProxyFactoryBean" abstract="true">
+	<property name="userManagement" ref="userManagement"></property>
+	</bean> -->
+	
+	<bean id="aspectBean" class="com.gwz.aop.TestAspect" />
 	<aop:config proxy-target-class="true">
 
 		<!-- 切入点 -->
@@ -52,29 +61,28 @@
 
 		<!-- 配置日志打印类 -->
 		<!-- order属性表示横切关注点的顺序，当有多个时，序号依次增加 -->
-		<!-- <aop:aspect id="log" ref="logHandler" order="1"> 
-		切入点为AccountServiceImpl类下的transfer方法 
+		<!-- <aop:aspect id="log" ref="logHandler" order="1"> 切入点为AccountServiceImpl类下的transfer方法 
 			<aop:pointcut id="logTime" expression="execution(* com.jdbc.AccountServiceImpl.transfer(..))"/> 
-			<aop:before method="LogBefore" pointcut-ref="logTime"/>
-			 <aop:after method="LogAfter" pointcut-ref="logTime"/> 
-			 </aop:aspect> -->
-			 
-			  <!-- <aop:aspect id="loggerAspect" ref="logger">
-            <aop:around method="record" pointcut="(execution(* com.aijava.distributed.ssh.service..*.add*(..))
-                                              or   execution(* com.aijava.distributed.ssh.service..*.update*(..))
-                                              or   execution(* com.aijava.distributed.ssh.service..*.delete*(..)))
-                                            and !bean(logService)"/>
-        </aop:aspect> -->
-        
-      
-        <aop:aspect id="TestAspect" ref="aspectBean">  
-           <!--  配置com.gwz.web.action包下所有类或接口的所有方法   -->
-            <aop:pointcut id="businessService"  expression="execution(* com.gwz.web.action..*.*(..))" />  
-            <aop:before pointcut-ref="businessService" method="doBefore"/>  
-            <aop:after pointcut-ref="businessService" method="doAfter"/>  
-            <aop:around pointcut-ref="businessService" method="doAround"/>  
-            <aop:after-throwing pointcut-ref="businessService" method="doThrowing" throwing="ex"/>  
-        </aop:aspect> 
+			<aop:before method="LogBefore" pointcut-ref="logTime"/> <aop:after method="LogAfter" 
+			pointcut-ref="logTime"/> </aop:aspect> -->
+
+		<!-- <aop:aspect id="loggerAspect" ref="logger"> <aop:around method="record" 
+			pointcut="(execution(* com.aijava.distributed.ssh.service..*.add*(..)) or 
+			execution(* com.aijava.distributed.ssh.service..*.update*(..)) or execution(* 
+			com.aijava.distributed.ssh.service..*.delete*(..))) and !bean(logService)"/> 
+			</aop:aspect> -->
+
+
+		<aop:aspect id="TestAspect" ref="aspectBean">
+			<!-- 配置com.gwz.web.action包下所有类或接口的所有方法 -->
+			<aop:pointcut id="businessService"
+				expression="execution(* com.gwz.serviceimpl..*.*(..))||execution(* com.gwz.web.action..*.*(..))" />
+			<aop:before pointcut-ref="businessService" method="doBefore" />
+			<aop:after pointcut-ref="businessService" method="doAfter" />
+			<aop:around pointcut-ref="businessService" method="doAround" />
+			<aop:after-throwing pointcut-ref="businessService"
+				method="doThrowing" throwing="ex" />
+		</aop:aspect>
 	</aop:config>
-	  
+
 </beans>
