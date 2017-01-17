@@ -36,27 +36,34 @@ public class UserManagementController {
 	public UserManagementController() {
 		// TODO Auto-generated constructor stub
 	}
+
 	@Autowired
 	private UserInfoServiceImpl userService;
-	/*public UserInfoServiceImpl getUserService() {
+
+/*	public UserInfoServiceImpl getUserService() {
 		return userService;
 	}
+
 	public void setUserService(UserInfoServiceImpl userService) {
 		this.userService = userService;
 	}*/
-	private UserInfo user=new UserInfo();
+
+	private UserInfo user = new UserInfo();
+/*
 	public UserInfo getUser() {
 		return user;
 	}
+
 	public void setUser(UserInfo user) {
 		this.user = user;
-	}
+	}*/
+
 	@RequestMapping(value = "/usermanagement/login", method = { RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView Login(@ModelAttribute UserInfo user1,HttpServletRequest request) throws Exception {
+	public ModelAndView Login(@ModelAttribute UserInfo user1, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView("/usermanagement/login");
 		try {
-			String ss=request.getParameter("loginName")==null?"test":request.getParameter("loginName");
-			
+			String ss = request.getParameter("loginName") == null ? "test" : request.getParameter("loginName");
+
 			Map<String, Object> map = mv.getModel();
 			UserInfo userInfo = new UserInfo();
 			userInfo.setId(UUID.randomUUID());
@@ -66,13 +73,14 @@ public class UserManagementController {
 			userInfo.setEmail("ming.lu@outlook.com");
 			userInfo.setGender(3);
 			userInfo.setAddress("Suzhou City,Jiangsu province");
-			
+
 			map.put("user", userInfo);
-			 
+
 			mv.addObject("map", map);
-						 
+
+			//AOP
 			userService.getUserInfoById(UUID.randomUUID());
-			
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

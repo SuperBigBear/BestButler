@@ -35,17 +35,23 @@
 	<!-- 切面 -->
 	<!-- aop编写,让Spring自动对目标进行代理，需要使用AspectJ的表达式 -->
 	<!-- <bean id="logHandler" class="com.jdbc.LogHandler"/> -->
+ 
 	<bean id="userService" class="com.gwz.serviceimpl.UserInfoServiceImpl" />
-	<bean id="userManagement" class="com.gwz.web.action.UserManagementController">
+	<!-- <bean id="userManagement" class="com.gwz.web.action.UserManagementController">
 		 <property name="userService" ref="userService"></property>
 	</bean>
 	
-	<!-- <bean id="proxyFactoryBean" class="org.springframework.aop.framework.ProxyFactoryBean" abstract="true">
+	 <bean id="proxyFactoryBean" class="org.springframework.aop.framework.ProxyFactoryBean" abstract="true">
 	<property name="userManagement" ref="userManagement"></property>
-	</bean> -->
+	<property name="proxyTargetClass"  value="true"></property>
+	<property name="target" >
+	<bean class="com.gwz.web.action.UserManagementController"/>
+	</property>
+	</bean>  -->
 	
 	<bean id="aspectBean" class="com.gwz.aop.TestAspect" />
-	<aop:config proxy-target-class="true">
+	<!-- proxy-target-class="false"  create proxy class base interface -->
+	<aop:config proxy-target-class="false">
 
 		<!-- 切入点 -->
 		<aop:pointcut expression="execution(* com.gwz.serviceimpl..*.*(..))"
