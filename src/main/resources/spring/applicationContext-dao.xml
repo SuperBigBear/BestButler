@@ -14,14 +14,21 @@
 		<property name="url" value="${jdbc.url}" />
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
+		<property name="filters" value="stat"/>
 		<property name="driverClassName" value="${jdbc.driver}" />
 		<property name="maxActive" value="10" />
 		<property name="minIdle" value="5" />
 	</bean> 
 	<!-- 配置sqlsessionFactory -->
 	 <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		
+		 <!--configLocation属性指定mybatis的核心配置文件--> 
 		<property name="configLocation" value="classpath:others/SqlMapConfig.xml"></property>
 		<property name="dataSource" ref="dataSource"></property>
+		
+     <!-- 所有配置的mapper文件 -->
+     <property name="mapperLocations" value="classpath*:com/gwz/daoimpl/*.xml" />
+       
 	</bean> 
 	<!-- 配置扫描包，加载mapper代理对象 -->
 	<!-- <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">

@@ -4,8 +4,8 @@ import java.util.UUID;
 
 public interface IDataRepository<T> {
 
-	public void Add(T t);
-	public void Update(T t);
-	public boolean Delete(T t);
-	public T GetById(UUID id);
+	public void add(T t);
+	public void update(T t);
+	public boolean delete(T t);
+	public T getById(UUID id);
 }

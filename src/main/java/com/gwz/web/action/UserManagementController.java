@@ -62,14 +62,16 @@ public class UserManagementController {
 	public ModelAndView Login(@ModelAttribute UserInfo user1, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView("/usermanagement/login");
 		try {
-			String ss = request.getParameter("loginName") == null ? "test" : request.getParameter("loginName");
-
+			String loginName = request.getParameter("loginName") == null ? "test" : request.getParameter("loginName");
+			//String loginanme=user1.getLoginName();
+			//System.out.println(loginanme);
+			
 			Map<String, Object> map = mv.getModel();
 			UserInfo userInfo = new UserInfo();
 			userInfo.setId(UUID.randomUUID());
 			userInfo.setFirstName("Ming");
 			userInfo.setLastName("Lu");
-			userInfo.setLoginName(ss);
+			userInfo.setLoginName(loginName);
 			userInfo.setEmail("ming.lu@outlook.com");
 			userInfo.setGender(3);
 			userInfo.setAddress("Suzhou City,Jiangsu province");
