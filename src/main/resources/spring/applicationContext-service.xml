@@ -16,7 +16,7 @@
      <context:property-placeholder location="classpath:others/resource.properties" />
    <import resource="applicationContext-dao.xml" />
    <import resource="applicationContext-trans.xml" />
-    <!--  <import resource="applicationContext-redis.xml" />
- -->
+    <import resource="applicationContext-aop.xml" />
+ <!--  <import resource="applicationContext-redus.xml" /> -->
      
 </beans>

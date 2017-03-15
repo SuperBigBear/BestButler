@@ -35,6 +35,9 @@
 	<!-- 切面 -->
 	<!-- aop编写,让Spring自动对目标进行代理，需要使用AspectJ的表达式 -->
 	<!-- <bean id="logHandler" class="com.jdbc.LogHandler"/> -->
+
+<!--  use cglib proxy	 -->
+ <aop:aspectj-autoproxy expose-proxy="true"></aop:aspectj-autoproxy>
  
 	<bean id="userService" class="com.gwz.serviceimpl.UserInfoServiceImpl" />
  <!--  <bean id="userManagement" class="com.gwz.web.action.UserManagementController">

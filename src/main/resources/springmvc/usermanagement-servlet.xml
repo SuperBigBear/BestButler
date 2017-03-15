@@ -19,7 +19,7 @@
 	<!--function description page url: http://zachary-guo.iteye.com/blog/1318597 -->
 	<mvc:annotation-driven />
 
-	<!-- 视图解析器 -->
+	<!-- set 视图解析器 -->
 	<bean id="viewResolverCommon"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 
