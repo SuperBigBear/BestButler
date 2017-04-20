@@ -130,7 +130,25 @@
 			<artifactId>mybatis-paginator</artifactId>
 			<version>1.2.17</version>
 		</dependency>
+		<!-- dubbo 用于分布式服务管理 -->
+ <dependency>
+                    <groupId>com.alibaba</groupId>
+                    <artifactId>dubbo</artifactId>
+                    <version>2.5.3</version>
+     </dependency>
 
+<!-- Zookeeper 用于分布式服务管理 -->
+                <dependency>
+                     <groupId>org.apache.zookeeper</groupId>
+                    <artifactId>zookeeper</artifactId>
+                   <version>3.4.5</version>
+                </dependency>
+            <dependency>
+                    <groupId>com.101tec</groupId>
+                    <artifactId>zkclient</artifactId>
+                    <version>0.3</version>
+            </dependency>
+       <!-- Zookeeper 用于分布式服务管理 end -->
 	</dependencies>
 
 
