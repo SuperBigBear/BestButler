@@ -11,4 +11,5 @@
 
 <!-- <bean class="org.springframework.web.servlet.mvc.support.ControllerBeanNameHandlerMapping"></bean> -->
 <!-- the latest configuration is <mvc:annotation-driven /> -->
+
 </beans>

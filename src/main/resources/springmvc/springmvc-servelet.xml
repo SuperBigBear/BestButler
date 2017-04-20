@@ -15,6 +15,7 @@
 		<property name="suffix" value=".jsp" />
 		<property name="order" value="1"></property>
 	</bean> -->
+	
 	<!-- <bean id="tilesViewResolver"
 		class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
 		<property name="viewClass"
@@ -22,6 +23,7 @@
 		</property>
 		<property name="order" value="0"></property>
 	</bean>
+	
 	<bean id="tilesConfigurer"
 		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
 		<property name="definitions">
@@ -30,6 +32,7 @@
 			</list>
 		</property>
 	</bean> -->
+	
 	<mvc:resources location="/WEB-INF/css/" mapping="/css/**" />
 	<mvc:resources location="/WEB-INF/js/" mapping="/js/**" />
 	<mvc:resources location="/WEB-INF/images/" mapping="/images/**" />
